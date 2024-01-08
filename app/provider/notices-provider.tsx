@@ -3,7 +3,7 @@
 import { Notice } from "@/src/types/Notice";
 import { PropsWithChildren, createContext, useState } from "react";
 
-interface NoticeContextValue {
+interface NoticesContextValue {
   notices: Notice[];
   addNotice: ({
     title,
@@ -24,7 +24,7 @@ interface NoticeContextValue {
   }) => void;
 }
 
-export const NoticeContext = createContext<NoticeContextValue>({
+export const NoticesContext = createContext<NoticesContextValue>({
   notices: [],
   addNotice: ({ title, body }: { title: string; body: string }) => {},
   deleteNotice: (_id: string) => {},
@@ -134,10 +134,10 @@ export default function NoticesProvider({
   };
 
   return (
-    <NoticeContext.Provider
+    <NoticesContext.Provider
       value={{ notices, addNotice, deleteNotice, updateNotice }}
     >
       {children}
-    </NoticeContext.Provider>
+    </NoticesContext.Provider>
   );
 }
