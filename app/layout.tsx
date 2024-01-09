@@ -1,5 +1,3 @@
-// import type { Metadata } from 'next'
-import "./globals.css";
 import NoticesProvider from "./provider/notices-provider";
 
 const { NEXT_PUBLIC_BASE_URL } = process.env;
