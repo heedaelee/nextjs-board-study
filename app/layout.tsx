@@ -15,7 +15,7 @@ export default async function RootLayout({
   const res = await fetch(`${NEXT_PUBLIC_BASE_URL}/api/notices`);
 
   const { data } = await res.json();
-  console.log(data);
+  // console.log(data);
 
   return (
     <html lang="en">

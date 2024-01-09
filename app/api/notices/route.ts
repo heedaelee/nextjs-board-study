@@ -14,7 +14,7 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   const { title, body } = await request.json();
-  console.log(title, body);
+  // console.log(title, body);
   const data = await postNotice({ title, body });
 
   return Response.json({ data });
