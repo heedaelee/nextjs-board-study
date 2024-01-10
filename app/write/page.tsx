@@ -2,9 +2,10 @@
 
 import { FormEvent } from "react";
 import styles from "../page.module.css";
+import { clientApi } from "@/src/lib/client-api/notices";
 
 export default function Write() {
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     // 새로고침 방지
     event.preventDefault();
 
@@ -19,12 +20,9 @@ export default function Write() {
     const title = titleElement?.value;
     const body = bodyElement?.value;
 
-    fetch("/api/notices", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ title, body }),
+    const { data, response } = await clientApi.postNotice({
+      title,
+      body,
     });
 
     // console.log(title, body);
