@@ -1,10 +1,14 @@
 "use client";
 
-import { FormEvent } from "react";
+import { FormEvent, useContext } from "react";
 import styles from "../page.module.css";
-import { clientApi } from "@/src/lib/client-api/notices";
+import { NoticeContext } from "../provider/notices-provider";
+import { useRouter } from "next/navigation";
 
 export default function Write() {
+  const { addNotice } = useContext(NoticeContext);
+  const { push } = useRouter();
+
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     // 새로고침 방지
     event.preventDefault();
@@ -20,12 +24,8 @@ export default function Write() {
     const title = titleElement?.value;
     const body = bodyElement?.value;
 
-    const { data, response } = await clientApi.postNotice({
-      title,
-      body,
-    });
-
-    // console.log(title, body);
+    await addNotice({ title, body });
+    push("/");
   };
 
   return (
