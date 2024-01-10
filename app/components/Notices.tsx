@@ -4,10 +4,10 @@ import { useContext } from "react";
 import styles from "../page.module.css";
 import { useRouter } from "next/navigation";
 import { Notice } from "@/src/types/Notice";
-import { NoticesContext } from "../provider/notices-provider";
+import { NoticeContext } from "../provider/notices-provider";
 
 export const Notices = () => {
-  const { notices, deleteNotice } = useContext(NoticesContext);
+  const { notices, deleteNotice } = useContext(NoticeContext);
   const { push } = useRouter();
 
   const handleRemove = async (_id: string) => {

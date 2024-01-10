@@ -4,7 +4,7 @@ import { clientApi } from "@/src/lib/client-api/notices";
 import { Notice } from "@/src/types/Notice";
 import { PropsWithChildren, createContext, useState } from "react";
 
-interface NoticesContextValue {
+interface NoticeContextValue {
   notices: Notice[];
   addNotice: (props: {
     title: string;
@@ -22,7 +22,7 @@ interface NoticesContextValue {
   }) => void;
 }
 
-const defaultNoticesContextValue = {
+const defaultNoticeContextValue = {
   notices: [],
   addNotice: (props: { title: string; body: string }) =>
     Promise.resolve(),
@@ -34,8 +34,8 @@ const defaultNoticesContextValue = {
   }) => Promise.resolve(),
 };
 
-export const NoticesContext = createContext<NoticesContextValue>(
-  defaultNoticesContextValue
+export const NoticeContext = createContext<NoticeContextValue>(
+  defaultNoticeContextValue
 );
 interface Props extends PropsWithChildren {
   initialNotices: Notice[];
@@ -125,10 +125,10 @@ export default function NoticesProvider({
   };
 
   return (
-    <NoticesContext.Provider
+    <NoticeContext.Provider
       value={{ notices, addNotice, deleteNotice, updateNotice }}
     >
       {children}
-    </NoticesContext.Provider>
+    </NoticeContext.Provider>
   );
 }
