@@ -1,4 +1,5 @@
 import { clientApi } from "@/src/lib/client-api/notices";
+import "./globals.css";
 import NoticesProvider from "./provider/notices-provider";
 
 export const metadata = {
